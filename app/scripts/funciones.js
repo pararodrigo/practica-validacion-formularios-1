@@ -4,47 +4,52 @@ $(function() {
 'use strict';
 
     
-
-    var promise = $.ajax({
+$('#cp').change(function() {
+        var promise = $.ajax({
         //url: 'http://localhost:8888/berificacion_bbdd/localidades.php',
         url: 'http://www.rodrigobenito.infenlaces.com/trabajosDWEC/formulario/localidades.php',
         type: 'GET',
         dataType: 'json',
-        data: {'cp': $('#cp').val()}
+        data: {cp: $('#cp').val()}
     });
     promise.done(function(data) {
         $.each(data, function(index) {
             
-            $('#lista_localidades').append('<option value="data[index].cod_prov">' + data[index].poblacion + '</option>');
+            $('#lista_localidades').append('<option value="'+data[index].cod_prov+'">' + data[index].poblacion + '</option>');
                     });
     });
     promise.fail(function() {
         console.log("error al obtener las localidades");
 
     });
+});
+
 
     //RELLENA LISTAS DE PROVINCIAS
 
-   
+$('#cp').focusout(function() {
 
-    var promise = $.ajax({
+        var promise = $.ajax({
          //url: 'http://localhost:8888/berificacion_bbdd/provincias.php',
         url: 'http://www.rodrigobenito.infenlaces.com/trabajosDWEC/formulario/provincias.php',
         type: 'GET',
         dataType: 'json',
-        data: {}
+        data: {cp: $('#cp').val()}
     });
     promise.done(function(data) {
         $.each(data, function(index) {
 
-            $('#lista_provincias').append('<option>' + data[index].provincia + '</option>');
-            //$('#lista_provincias').append('<option value="'+data[index].cod_prov+'">' + data[index].provincia + '</option>');
+            $('#lista_provincias').append('<option value="'+data[index].provincia+'">' + data[index].provincia + '</option>');
+           
         });
     });
     promise.fail(function(data) {
         console.log("error al obtener las provincias");
 
     });
+});
+
+
 
     //ESTO ES PARA CAMBIAR EL NOMBRE DE LOS CAMPOS EN FUNCION DE EL CHECK SELECCIONADO
     $('#demandante').change(function() {

@@ -51,7 +51,9 @@ $('#formulario').validate({
             required: true
         },
         cp: {
-            required: true
+            required: true,
+            maxlength:5,
+            digits:true
         },
         localidad: {
             required: true
@@ -125,7 +127,9 @@ $('#formulario').validate({
             required: "Este campo es obligatorio"
         },
         cp: {
-            required: "Este campo es obligatorio"
+            required: "Este campo es obligatorio",
+            maxlength:"El codigo postal debe ser correcto",
+            digits:"El codigo postal debe ser correcto"
         },
         localidad: {
             required: "Este campo es obligatorio"
