@@ -2,11 +2,11 @@ $('#formulario').validate({
     rules: {
         nombre: {
             required: true,
-            lettersonly: true
+            lettersonly:true
         },
         apellido: {
             required: true,
-            lettersonly: true
+            lettersonly:true
         },
         telefono: {
             required: true,
@@ -16,7 +16,8 @@ $('#formulario').validate({
         },
         email: {
             required: true,
-            email: true
+            email: true,
+            remote: "http://www.rodrigobenito.infenlaces.com/trabajosDWEC/formulario/validar_email_db.php"
         },
         confirma_email: {
             equalTo: "#email",
@@ -66,8 +67,7 @@ $('#formulario').validate({
         },
         iban: {
             required: true,
-            iban: true,
-            maxlength: 24 //Para España son 24
+            iban: true
         },
         pago: {
             required: true
@@ -105,7 +105,8 @@ $('#formulario').validate({
         },
         email: {
             required: "Este campo es obligatorio",
-            email: "El email debe ser valido"
+            email: "El email debe ser valido",
+            remote:"Este usuario ya esta registrado"
         },
         confirma_email: {
             equalTo: "El email con coincide",
@@ -142,8 +143,7 @@ $('#formulario').validate({
         },
         iban: {
             required: "Este campo es obligatorio",
-            iban: "El iban debe ser valido",
-            maxlength: "Numero maximo de caracteres 24" //Para España son 24
+            iban: "El iban debe ser valido"
         },
         pago: {
             required: "Este campo es obligatorio"
