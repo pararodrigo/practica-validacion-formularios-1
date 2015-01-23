@@ -165,11 +165,11 @@ $('#formulario').validate({
 
        $("#pswd").valid();
 
-       $("#formulario").submit(function() {
-        'use strict';
-         return confirm("Se va a dar de alta y que se le pasará la primera cuota de 50€, 140€ o 550€ según corresponda (forma de pago).");
-       });
+       function preguntar(){
+            'use strict';
+            confirm('mensaje de confirmacion');
+       };
         
-   
+  
 
 
