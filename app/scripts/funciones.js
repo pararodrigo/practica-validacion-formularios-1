@@ -1,11 +1,19 @@
 $(function() {
-
-    //RELLENA LISTAS DE LOCALIDADES
+    //AUTOCOMPLITAR CP
 'use strict';
+    $('#cp').focusout(function() {
 
-    
-$('#cp').change(function() {
-        var promise = $.ajax({
+        var cp = $('#cp').val();
+        var digitos = cp.length;
+        var ceros = "";
+        for (var i = 1; i <= (5 - digitos); i++) {
+            ceros = '0' + ceros;
+        };
+        var resultado = ceros + cp;
+        $('#cp').val(resultado);
+
+//RELLENA LISTAS DE LOCALIDADES
+         var promise = $.ajax({
         //url: 'http://localhost:8888/berificacion_bbdd/localidades.php',
         url: 'http://www.rodrigobenito.infenlaces.com/trabajosDWEC/formulario/localidades.php',
         type: 'GET',
@@ -15,20 +23,15 @@ $('#cp').change(function() {
     promise.done(function(data) {
         $.each(data, function(index) {
             
-            $('#lista_localidades').append('<option value="'+data[index].cod_prov+'">' + data[index].poblacion + '</option>');
+            $('#lista_localidades').append('<option value="'+data[index].poblacion+'">' + data[index].poblacion + '</option>');
                     });
     });
     promise.fail(function() {
         console.log("error al obtener las localidades");
 
     });
-});
 
-
-    //RELLENA LISTAS DE PROVINCIAS
-
-$('#cp').focusout(function() {
-
+//RELLENA LISTAS DE PROVINCIAS
         var promise = $.ajax({
          //url: 'http://localhost:8888/berificacion_bbdd/provincias.php',
         url: 'http://www.rodrigobenito.infenlaces.com/trabajosDWEC/formulario/provincias.php',
@@ -47,9 +50,9 @@ $('#cp').focusout(function() {
         console.log("error al obtener las provincias");
 
     });
-});
 
-
+    });
+    
 
     //ESTO ES PARA CAMBIAR EL NOMBRE DE LOS CAMPOS EN FUNCION DE EL CHECK SELECCIONADO
     $('#demandante').change(function() {
@@ -85,20 +88,6 @@ $('#cp').focusout(function() {
         var email = $('#email').val();
 
         $('#usuario').val(email);
-    });
-    //AUTOCOMPLITAR CP
-
-    $('#cp').focusout(function() {
-
-        var cp = $('#cp').val();
-        var digitos = cp.length;
-        var ceros = "";
-        for (var i = 1; i <= (5 - digitos); i++) {
-            ceros = '0' + ceros;
-        };
-        var resultado = ceros + cp;
-        $('#cp').val(resultado);
-
     });
 
 });

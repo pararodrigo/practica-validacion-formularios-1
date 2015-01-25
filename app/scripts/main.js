@@ -2,11 +2,11 @@ $('#formulario').validate({
     rules: {
         nombre: {
             required: true,
-            lettersonly:true
+            lettersonly: true
         },
         apellido: {
             required: true,
-            lettersonly:true
+            lettersonly: true
         },
         telefono: {
             required: true,
@@ -29,19 +29,19 @@ $('#formulario').validate({
         cif_nif: {
             required: true,
             cifES: {
-                depends: function(){
+                depends: function() {
                     'use strict';
-                    return  $('#empresa').is(':checked');
+                    return $('#empresa').is(':checked');
                 }
             },
             nifES: {
-                depends: function(){ 
+                depends: function() {
                     'use strict';
                     return $('#particular').is(':checked')
                 }
-                   
+
             }
-            
+
 
         },
         nombre_empresa: {
@@ -53,8 +53,8 @@ $('#formulario').validate({
         },
         cp: {
             required: true,
-            maxlength:5,
-            digits:true
+            maxlength: 5,
+            digits: true
         },
         localidad: {
             required: true
@@ -78,12 +78,12 @@ $('#formulario').validate({
         },
         password: {
             required: true,
-            password: true
+            
         },
         confirma_password: {
-            //password: "ignore",
+            
             equalTo: "#pswd",
-            minLength: 6
+            
         }
 
 
@@ -106,7 +106,7 @@ $('#formulario').validate({
         email: {
             required: "Este campo es obligatorio",
             email: "El email debe ser valido",
-            remote:"Este usuario ya esta registrado"
+            remote: "Este usuario ya esta registrado"
         },
         confirma_email: {
             equalTo: "El email con coincide",
@@ -117,8 +117,8 @@ $('#formulario').validate({
         },
         cif_nif: {
             required: "Este campo es obligatorio",
-            nifES:"El NIF no es valido",
-            cifES:"El CIF no es valido"
+            nifES: "El NIF no es valido",
+            cifES: "El CIF no es valido"
         },
         nombre_empresa: {
 
@@ -129,8 +129,8 @@ $('#formulario').validate({
         },
         cp: {
             required: "Este campo es obligatorio",
-            maxlength:"El codigo postal debe ser correcto",
-            digits:"El codigo postal debe ser correcto"
+            maxlength: "El codigo postal debe ser correcto",
+            digits: "El codigo postal debe ser correcto"
         },
         localidad: {
             required: "Este campo es obligatorio"
@@ -150,26 +150,33 @@ $('#formulario').validate({
         },
         usuario: {
             required: "Este campo es obligatorio",
-            minlength: "debe tener un minimo de 4 caracteres"
+            minlength: 'debe tener un minimo de 4 caracteres'
         },
         password: {
             required: "Este campo es obligatorio",
-            minLength:"Debe tener un minimo de 6 caracteres, debe contener mayusculas y minusculas y algun numero"
+            minLength: "Debe tener un minimo de 6 caracteres, debe contener mayusculas y minusculas y algun numero"
 
         },
         confirma_password: {
             equalTo: "La contraseña no coincide"
         }
     },
+
+    
+    submitHandler: function(form) {
+        'use strict';
+        var confirmar = confirm('Se le pasará la primera cuota de 50€, 140€ o 550€ según corresponda (forma de pago).');
+        if (confirma === false) {
+            return false;
+        }else{
+            form.submit();
+        }
+        
+        }
+
+    
+
 });
 
-       $("#pswd").valid();
-
-       function preguntar(){
-            'use strict';
-            confirm('mensaje de confirmacion');
-       };
-        
-  
-
+$("#pswd").valid();
 
