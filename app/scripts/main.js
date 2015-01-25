@@ -166,10 +166,11 @@ $('#formulario').validate({
     submitHandler: function(form) {
         'use strict';
         var confirmar = confirm('Se le pasará la primera cuota de 50€, 140€ o 550€ según corresponda (forma de pago).');
-        if (confirma === false) {
+        if (confirmar === false) {
             return false;
+            
         }else{
-            form.submit();
+            return true;
         }
         
         }
