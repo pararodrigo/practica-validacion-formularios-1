@@ -1,8 +1,8 @@
 $('#formulario').validate({
     rules: {
         nombre: {
-            required: true,
-            lettersonly: true
+            required: true
+            //lettersonly: true
         },
         apellido: {
             required: true,

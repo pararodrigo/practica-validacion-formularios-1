@@ -1,7 +1,7 @@
 $(function() {
     //AUTOCOMPLITAR CP
 'use strict';
-    $('#cp').focusout(function() {
+    $('#cp').change(function() {
 
         var cp = $('#cp').val();
         var digitos = cp.length;

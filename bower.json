@@ -6,5 +6,6 @@
     "jquery-validate": "~1.13.1",
     "bootstrap": "~3.3.1",
     "jquery-validation.password": "*"
+    
   }
 }
